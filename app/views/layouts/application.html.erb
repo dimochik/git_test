@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FirstApp</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div>
+	<% if user_signed_in? %>
+	Signed in <%= current_user.email%> <%= link_to "Sign out", destroy_user_session_path %>
+	<% else%>
+	Not signed in: <%= link_to "Sign in", new_user_session_path %>, <%= link_to "Sign up", new_user_registration_path %>
+	<% end %>
+</div>
+<%= yield %>
+
+</body>
+</html>
